@@ -26,13 +26,15 @@ var BeepPanZoom = {
       this.lastY = 0;
       this.pinchCenter = null;
       this.hammer=null;
+	  this.setup();
       this.initHammer();
       
     return this;
   },
   options: {
-    MIN_SCALE:1,
-    MAX_SCALE:64,
+    MIN_SCALE:0,
+    MAX_SCALE:5,
+	ZOOM:1,
 	onZoom:null
   },
   
@@ -236,19 +238,31 @@ var BeepPanZoom = {
           
       }
       ,
-      initHammer: function(){
-        this.rwdImageMap();
-        var self=this;
-        this.disableImgEventHandlers();
-        this.imgWidth = this.img.width;
+	  setup:function(){
+		this.rwdImageMap();
+		this.disableImgEventHandlers();
+		this.imgWidth = this.img.width;
         this.imgHeight = this.img.height;
-        this.viewportWidth = this.img.offsetWidth;
-        this.scale = this.viewportWidth/this.imgWidth;
-        this.lastScale = this.scale;
+	
+		this.viewportWidth = this.img.offsetWidth;
         this.viewportHeight = this.img.parentElement.offsetHeight;
+		this.scale = this.viewportWidth/(this.imgWidth);
+        this.lastScale = this.scale;
         this.curWidth = this.imgWidth*this.scale;
         this.curHeight = this.imgHeight*this.scale;
+		
+		this.zoom(this.options.ZOOM);
 
+
+		this.imgWidth = this.img.width;
+        this.imgHeight = this.img.height;
+
+		//this.zoomCenter
+	  }
+	  ,
+      initHammer: function(){
+        
+        var self=this;
         this.hammer = new Hammer(this.container, {
           domEvents: true
         });
@@ -294,9 +308,7 @@ var BeepPanZoom = {
           self.zoomAround(2, c.x, c.y);
         });
 
-    
-    
-    
+
   }
 };
 
