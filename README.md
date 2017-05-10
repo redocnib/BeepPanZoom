@@ -4,10 +4,10 @@ A hammer.js &amp;amp; Jquery based Touch Event Enabled Image Viewer Plugin with 
   Sample Usage:
   
   &lt;div class=&quot;img_cotainer&quot; style=&quot;overflow:hidden;width:100px;height:100px&quot;&gt;
-  <img src="assets/image.jpg"  usemap="#image-map">
-  <map name="image-map">
-    <area target="" alt="" title="" href="http://example.com/" coords="1909,3816,2026,4061" shape="rect">
-  </map>  
+  &lt;img src="assets/image.jpg"  usemap="#image-map"&gt;
+  &lt;map name="image-map"&gt;
+    &lt;area target="" alt="" title="" href="http://example.com/" coords="1909,3816,2026,4061" shape="rect"&gt;
+  &lt;/map&gt;
   &lt;/div&gt;
     
 Usage :
